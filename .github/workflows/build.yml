@@ -1,0 +1,30 @@
+# .github/workflows/build.yml
+name: Build and Deploy Resource Pack
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Merge Packs
+        run: |
+          mkdir combined
+          for d in packs/*; do
+            cp -r $d/* combined/
+          done
+          cp pack.mcmeta combined/
+          cp pack.png combined/
+          zip -r pack.zip combined/*
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          destination_dir: .
