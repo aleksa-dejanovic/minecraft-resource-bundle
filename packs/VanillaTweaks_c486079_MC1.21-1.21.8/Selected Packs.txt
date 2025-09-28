@@ -1,0 +1,9 @@
+Vanilla Tweaks Crafting Tweaks
+Version: 1.21
+Packs:
+	unpackable ice
+	more trapdoors
+	double slabs
+	back to blocks
+	dropper to dispenser
+	universal dyeing
