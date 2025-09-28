@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "pack_format": 48,
+    "description": "\u00A77Potions with a bit of personality - \u00A7oby \u00A7oDelled",
+    "supported_formats": {
+      "min_inclusive": 30,
+      "max_inclusive": 99
+    }
+  }
+}

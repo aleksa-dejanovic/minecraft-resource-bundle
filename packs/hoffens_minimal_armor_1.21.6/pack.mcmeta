@@ -1,0 +1,15 @@
+{
+    "pack": {
+        "pack_format": 63,
+		"supported_formats": [46, 42, 41, 26, 18, 15, 55],
+        "description": "\u00A73Minimal Armor\n\u00A74by Hoffen @_InkGhoul"
+    },
+	"overlays": {
+		"entries": [
+			{
+				"formats": {"min_inclusive": 18, "max_inclusive": 2147483647},
+				"directory": "overlay_18"
+			}
+		]
+	}
+}
