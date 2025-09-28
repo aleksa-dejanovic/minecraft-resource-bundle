@@ -19,7 +19,8 @@ jobs:
           done
           cp pack.mcmeta combined/
           cp pack.png combined/
-          zip -r pack.zip combined/*
+          cd combined
+          zip -r ../pack.zip *
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
