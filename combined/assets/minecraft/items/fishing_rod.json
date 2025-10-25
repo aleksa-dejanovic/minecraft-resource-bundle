@@ -1,86 +1,63 @@
 {
     "model": {
-      "type": "minecraft:condition",
-        "property": "minecraft:has_component",
-        "component": "minecraft:enchantments",
-        "ignore_default": true,
-      "on_true": {
-        "type": "minecraft:condition",
-        "property": "minecraft:fishing_rod/cast",
-        "on_false": {
-            "type": "minecraft:composite",
-            "models": [
-              {
-                "type": "minecraft:model",
-                "model": "minecraft:item/fishing_rods/e_fishing_rod"
-              },
-              {
-                "type": "minecraft:model",
-                "model": "minecraft:item/defaults/fishing_rod"
-              }
-            ]
-        },
-        "on_true": {
-            "type": "minecraft:composite",
-            "models": [
-              {
-                "type": "minecraft:model",
-                "model": "minecraft:item/fishing_rods/e_fishing_rod_cast"
-              },
-              {
-                "type": "minecraft:model",
-                "model": "minecraft:item/defaults/fishing_rod_cast"
-              }
-            ]
-        }
-      },
-      "on_false": {
-        "type": "minecraft:condition",
-          "property": "minecraft:has_component",
-          "component": "minecraft:enchantment_glint_override",
-          "ignore_default": true,
-        "on_true": {
-          "type": "minecraft:condition",
-          "property": "minecraft:fishing_rod/cast",
-          "on_false": {
-              "type": "minecraft:composite",
-              "models": [
-                {
-                  "type": "minecraft:model",
-                  "model": "minecraft:item/fishing_rods/e_fishing_rod"
+        "type": "composite",
+        "models": [
+            {
+                "type": "condition",
+                "property": "component",
+                "predicate": "enchantments",
+                "value": [{"enchantments": "unbreaking"}],
+                "on_true": {
+                    "type": "condition",
+                    "property": "component",
+                    "predicate": "enchantments",
+                    "value": [{"enchantments": "vanishing_curse"}],
+                    "on_true": {"type": "model", "model": "item/fishing_rod/unbreaking_vanishing"},
+                    "on_false": {"type": "model", "model": "item/fishing_rod/unbreaking"}
                 },
-                {
-                  "type": "minecraft:model",
-                  "model": "minecraft:item/defaults/fishing_rod"
+                "on_false": {
+                    "type": "condition",
+                    "property": "component",
+                    "predicate": "enchantments",
+                    "value": [{"enchantments": "vanishing_curse"}],
+                    "on_true": {"type": "model", "model": "item/fishing_rod/vanishing"},
+                    "on_false": {"type": "model", "model": "item/fishing_rod/base"}
                 }
-              ]
-          },
-          "on_true": {
-              "type": "minecraft:composite",
-              "models": [
-                {
-                  "type": "minecraft:model",
-                  "model": "minecraft:item/fishing_rods/e_fishing_rod_cast"
+            },
+            {
+                "type": "condition",
+                "property": "fishing_rod/cast",
+                "on_true": {"type": "empty"},
+                "on_false": {
+                    "type": "condition",
+                    "property": "component",
+                    "predicate": "enchantments",
+                    "value": [{"enchantments": "luck_of_the_sea"}],
+                    "on_true": {"type": "model", "model": "item/fishing_rod/luck_of_the_sea"},
+                    "on_false": {"type": "model", "model": "item/fishing_rod/hook"}
+                }
+            },
+            {
+                "type": "condition",
+                "property": "component",
+                "predicate": "enchantments",
+                "value": [{"enchantments": "lure"}],
+                "on_true": {
+                    "type": "condition",
+                    "property": "fishing_rod/cast",
+                    "on_true": {"type": "model", "model": "item/fishing_rod/lure"},
+                    "on_false": {"type": "model", "model": "item/fishing_rod/lure_off"}
                 },
-                {
-                  "type": "minecraft:model",
-                  "model": "minecraft:item/defaults/fishing_rod_cast"
-                }
-              ]
-          }
-        },
-        "on_false": {
-          "type": "minecraft:condition",
-          "property": "minecraft:fishing_rod/cast",
-          "on_false": {
-            "type": "minecraft:model",
-            "model": "minecraft:item/defaults/fishing_rod"
-          },
-          "on_true": {
-            "type": "minecraft:model",
-            "model": "minecraft:item/defaults/fishing_rod_cast"
-          }
-        }
-      }
+                "on_false": {"type": "empty"}
+            },
+            {
+                "type": "condition",
+                "property": "component",
+                "predicate": "enchantments",
+                "value": [{"enchantments": "mending"}],
+                "on_true": {"type": "model", "model": "item/fishing_rod/mending"},
+                "on_false": {"type": "empty"}
+            }
+        ]
     }
-  }
+}

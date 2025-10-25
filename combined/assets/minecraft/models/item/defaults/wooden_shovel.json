@@ -1,7 +1,0 @@
-{
-    "parent": "item/generic_shovel",
-    "textures": {
-        "shovel": "item/wooden_shovel",
-		"particle": "item/wooden_shovel"
-    }
-}

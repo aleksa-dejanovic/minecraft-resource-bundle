@@ -1,7 +1,0 @@
-{
-    "parent": "citparents/enchanted_boots",
-    "textures": {
-        "boots": "item/chainmail_boots",
-		"particle": "item/chainmail_boots"
-    }
-}

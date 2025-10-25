@@ -1,7 +1,0 @@
-{
-    "parent": "citparents/generic_hoe",
-    "textures": {
-        "hoe": "item/netherite_hoe",
-		"particle": "item/netherite_hoe"
-    }
-}

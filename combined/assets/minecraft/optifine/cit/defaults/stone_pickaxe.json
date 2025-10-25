@@ -1,7 +1,0 @@
-{
-    "parent": "citparents/generic_pickaxe",
-    "textures": {
-        "pickaxe": "item/stone_pickaxe",
-		"particle": "item/stone_pickaxe"
-    }
-}

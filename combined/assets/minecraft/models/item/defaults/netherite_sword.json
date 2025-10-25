@@ -1,7 +1,0 @@
-{
-    "parent": "item/generic_sword",
-    "textures": {
-        "sword": "item/netherite_sword",
-		"particle": "item/netherite_sword"
-    }
-}

@@ -1,46 +1,75 @@
 {
+  "hand_animation_on_swap": false,
   "model": {
-    "type": "minecraft:condition",
-        "property": "minecraft:has_component",
-        "component": "minecraft:enchantments",
-        "ignore_default": true,
-    "on_true": {
-      "type": "minecraft:composite",
-      "models": [
-        {
-          "type": "minecraft:model",
-          "model": "minecraft:item/warped_fungus_on_a_stick",
-          "tints": []
-        },
-        {
-          "type": "minecraft:model",
-          "model": "minecraft:item/fishing_rods/enchanted_warped_fungus_on_a_stick"
-        }
-      ]
-    },
-    "on_false": {
-      "type": "minecraft:condition",
-          "property": "minecraft:has_component",
-          "component": "minecraft:enchantment_glint_override",
-          "ignore_default": true,
-      "on_true": {
-        "type": "minecraft:composite",
-        "models": [
+    "type": "composite",
+    "models": [
+      {
+        "type": "condition",
+        "property": "component",
+        "predicate": "enchantments",
+        "value": [
           {
-            "type": "minecraft:model",
-            "model": "minecraft:item/warped_fungus_on_a_stick",
-            "tints": []
-          },
-          {
-            "type": "minecraft:model",
-            "model": "minecraft:item/fishing_rods/enchanted_warped_fungus_on_a_stick"
+            "enchantments": "vanishing_curse"
           }
-        ]
+        ],
+        "on_true": {
+          "type": "condition",
+          "property": "component",
+          "predicate": "enchantments",
+          "value": [
+            {
+              "enchantments": "unbreaking"
+            }
+          ],
+          "on_true": {
+            "type": "model",
+            "model": "item/warped_fungus_on_a_stick/unbreaking_vanishing"
+          },
+          "on_false": {
+            "type": "model",
+            "model": "item/warped_fungus_on_a_stick/vanishing"
+          }
+        },
+        "on_false": {
+          "type": "condition",
+          "property": "component",
+          "predicate": "enchantments",
+          "value": [
+            {
+              "enchantments": "unbreaking"
+            }
+          ],
+          "on_true": {
+            "type": "model",
+            "model": "item/warped_fungus_on_a_stick/unbreaking"
+          },
+          "on_false": {
+            "type": "model",
+            "model": "item/warped_fungus_on_a_stick/base"
+          }
+        }
       },
-      "on_false": {
-        "type": "minecraft:model",
-        "model": "minecraft:item/warped_fungus_on_a_stick"
+      {
+        "type": "condition",
+        "property": "component",
+        "predicate": "enchantments",
+        "value": [
+          {
+            "enchantments": "mending"
+          }
+        ],
+        "on_true": {
+          "type": "model",
+          "model": "item/warped_fungus_on_a_stick/mending"
+        },
+        "on_false": {
+          "type": "empty"
+        }
+      },
+      {
+        "type": "model",
+        "model": "item/warped_fungus_on_a_stick/warped_fungus"
       }
-    }
+    ]
   }
 }

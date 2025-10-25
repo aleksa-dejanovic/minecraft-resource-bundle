@@ -1,44 +1,73 @@
 {
-  "model": {
-    "type": "minecraft:condition",
-        "property": "minecraft:has_component",
-        "component": "minecraft:enchantments",
-        "ignore_default": true,
-    "on_true": {
-      "type": "minecraft:composite",
-      "models": [
-        {
-          "type": "minecraft:model",
-          "model": "minecraft:item/enchanted_shovel"
-        },
-        {
-          "type": "minecraft:model",
-          "model": "minecraft:item/defaults/golden_shovel"
-        }
-      ]
-    },
-    "on_false": {
-      "type": "minecraft:condition",
-          "property": "minecraft:has_component",
-          "component": "minecraft:enchantment_glint_override",
-          "ignore_default": true,
-      "on_true": {
-        "type": "minecraft:composite",
+    "hand_animation_on_swap": false,
+    "model": {
+        "type": "composite",
         "models": [
-          {
-            "type": "minecraft:model",
-            "model": "minecraft:item/enchanted_shovel"
-          },
-          {
-            "type": "minecraft:model",
-            "model": "minecraft:item/defaults/golden_shovel"
-          }
+            {
+                "type": "condition",
+                "property": "component",
+                "predicate": "enchantments",
+                "value": [{"enchantments": "vanishing_curse"}],
+                "on_true": {
+                    "type": "model",
+                    "model": "item/tools/vanishing/golden_shovel"
+                },
+                "on_false": {
+                    "type": "model",
+                    "model": "item/golden_shovel"
+                }
+            },
+            {
+                "type": "condition",
+                "property": "minecraft:component",
+                "predicate": "minecraft:enchantments",
+                "value": [{
+                    "enchantments": "minecraft:unbreaking"
+                }],
+                "on_true": { "type": "model", "model": "minecraft:item/tools/unbreakingshovel" },
+                "on_false": { "type": "empty" }
+            },
+            {
+                "type": "condition",
+                "property": "minecraft:component",
+                "predicate": "minecraft:enchantments",
+                "value": [{
+                    "enchantments": "minecraft:efficiency"
+                }],
+                "on_true": { "type": "model", "model": "minecraft:item/tools/efficiency" },
+                "on_false": { "type": "empty" }
+            },
+            {
+                "type": "condition",
+                "property": "minecraft:component",
+                "predicate": "minecraft:enchantments",
+                "value": [{
+                    "enchantments": "minecraft:silk_touch"
+                }],
+                "on_true": { "type": "model", "model": "minecraft:item/tools/silk_touch_shovel" },
+                "on_false": { "type": "empty" }
+            },
+            {
+                "type": "condition",
+                "property": "minecraft:component",
+                "predicate": "minecraft:enchantments",
+                "value": [{
+                    "enchantments": "minecraft:fortune"
+                }],
+                "on_true": { "type": "model", "model": "minecraft:item/tools/fortune_shovel" },
+                "on_false": { "type": "empty" }
+            },
+            {
+                "type": "condition",
+                "property": "minecraft:component",
+                "predicate": "minecraft:enchantments",
+                "value": [{
+                    "enchantments": "minecraft:mending"
+                }],
+                "on_true": { "type": "model", "model": "minecraft:item/tools/mending" },
+                "on_false": { "type": "empty" }
+            }
         ]
-      },
-      "on_false": {
-        "type": "minecraft:model",
-        "model": "minecraft:item/defaults/golden_shovel"
-      }
     }
-  }
+    
 }
